@@ -6,9 +6,10 @@ public class Grocery1 {
 
     Map<Integer, String> grocery = new HashMap<>();
 
-    public Grocery1() {
-        System.out.println("you have " + grocery.size() + " items currently");
+    public void listAll() {
+        System.out.println("你有" + grocery.size() + "件商品！！");
         for (Object key : grocery.keySet()) {
+            System.out.print(key+"  ");
             System.out.println(grocery.get(key));
         }
 
@@ -16,14 +17,14 @@ public class Grocery1 {
 
     public void addItem(Integer key, String item) {
         grocery.put(key, item);
-        System.out.println(item + " add");
+        System.out.println(item+"已添加！");
     }
 
     public void delItemkey(Integer key) {
 
         String r = grocery.get(key);
         grocery.remove(key);
-        System.out.println(r + " delete");
+        System.out.println(r + "已删除！");
     }
 
     public void delItemvalue(String value) {
@@ -43,11 +44,11 @@ public class Grocery1 {
             for (int i=0;i<al.size();i++) {
                 String d = grocery.get(al.get(i));
                 grocery.remove(al.get(i));
-                System.out.println( d+" has been delete");
+                System.out.println( d+"被删除！");
             }
         }
         else
-            System.out.println("no delete");
+            System.out.println("没有删除什么！");
 
 
     }
@@ -57,9 +58,11 @@ public class Grocery1 {
         for (Integer id : grocery.keySet()) {
 
             if ( id.equals(key) ) {
+                System.out.println(grocery.get(id) + "被修改!");
                 grocery.replace(id,value);
-                System.out.println(grocery.get(id) + " has been modify!");
             }
+            else
+                System.out.println("没有修改成功。。。。");
 
 
             }
@@ -74,7 +77,7 @@ public class Grocery1 {
                 String newName = in.nextLine();
                 grocery.replace(id,newName);
 
-                System.out.println(grocery.get(id)+" has been modify");
+                System.out.println(grocery.get(id)+"被修改！");
 
             }
         }
@@ -85,13 +88,13 @@ public class Grocery1 {
         int flag = 0;
         for (Integer key : grocery.keySet()) {
             if ( grocery.get(key).equals(value) ) {
-                System.out.println(grocery.get(key) + " has find");
+                System.out.println(grocery.get(key) + "找到了！");
                 flag = 1;
             }
         }
         if ( flag == 0 ) {
 
-            return " no find item!";
+            return "没有找到该商品!";
         }
         return "";
     }
@@ -100,14 +103,14 @@ public class Grocery1 {
         int flag = 0;
         for (Integer keys : grocery.keySet()) {
             if ( key.equals(keys) ) {
-                System.out.println(grocery.get(key) + " has find");
+                System.out.println(grocery.get(key) + "有找到！");
                 flag = 1;
             } else
                 continue;
         }
         if ( flag == 0 ) {
 
-            return " has not find";
+            return "没有找到该商品！";
         }
         return "";
     }
