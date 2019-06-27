@@ -35,23 +35,23 @@ public class School {
         List<Student> students = register();
 //        log("", students);
 
-        //total number
+// total number
         long studentCount = students.stream().mapToLong(s -> 1l).sum();
         log("Total of student is :", studentCount);
 
-        //total credit
+//total credit
         long totalCredits = students.stream().mapToLong(Student::getCredit).sum();
         log("Total credits is :", totalCredits);
 
 
-                Map<Student.Gender, Long> groupCountByGender = students.stream()
+        Map<Student.Gender, Long> groupCountByGender = students.stream()
                         .collect(Collectors.groupingBy(
                                 Student::getGender, Collectors.counting()));
         log("Student total by gender is :", groupCountByGender);
 
 
 
-        //Max credit
+//Max credit
         Optional<Student> maxCredit = students.stream()
                 .max(Comparator.comparingInt(Student::getCredit));
         maxCredit.ifPresent(student -> log("Max credit is :", student.getName()));
